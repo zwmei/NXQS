@@ -1,0 +1,26 @@
+{
+  "name": "NXQS",
+  "version": "0.0.1",
+  "homepage": "https://github.com/zwmei/NXQS",
+  "authors": [
+    "wayne"
+  ],
+  "description": "个人代码集合",
+  "keywords": [
+    "try",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "seajs": "~3.0.0",
+    "requirejs": "~2.1.22",
+    "jquery": "~2.2.0"
+  }
+}
