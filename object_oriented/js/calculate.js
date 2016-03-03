@@ -11,5 +11,8 @@ define(function (require, exports, module) {
     this.getSex = function () {
       return this.sex;
     }
+
+    var data = require('data');
+    console.log(data.name);
   }
 });

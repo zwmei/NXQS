@@ -11,6 +11,9 @@ define(function (require, exports, module) {
   //
   //module.exports.prototype = new calculate(10,1);
 
+
+  console.log('data js');
+
   exports.name = 'exports.name';
   module.exports.name = 'module.exports.name';
 

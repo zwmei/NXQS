@@ -30,15 +30,21 @@ seajs.on('exec', function(module) {
     seajs.use('../js/main', function (main) {
       window.onload = function () {
         console.log('dev');
-        main.init();
+        //main.init();
       };
     });
   }
   else {
     seajs.use('../js/main', function (main) {
       window.onload = function () {
-        console.log('product');
-        main.init();
+        //console.log('product');
+        //main.init();
+
+        $('body').click(function () {
+          main.init();
+          main.exit();
+        });
+
       };
     });
   }

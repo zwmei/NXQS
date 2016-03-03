@@ -9,8 +9,8 @@ define(function(require, exports, module) {
 
   var $ = jQuery;
 
-  var calculate = require('calculate');
-  var data = require('data');
+  //var calculate = require('calculate');
+  //var data = require('data');
 
   // 通过 exports 对外提供接口
   exports.init = function () {
@@ -24,8 +24,17 @@ define(function(require, exports, module) {
     //
     //console.log('age' , newData.getAge());
     //console.log('sex' , newData.getSex());
-    console.log(data.name);
 
+    var data = require('data');
+    console.log(data.name);
   };
+
+  exports.exit = function () {
+    var calculate = require('calculate');
+    var calc = new calculate(12, false);
+    console.log('age', calc.getAge());
+    console.log('sex', calc.getSex());
+
+  }
 
 });
