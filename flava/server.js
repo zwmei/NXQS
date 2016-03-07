@@ -18,3 +18,6 @@ exports.index1 = function () {
 
 }
 
+exports.index3 = function () {
+
+}
