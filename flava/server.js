@@ -9,3 +9,7 @@ var express = require('./config/express');
 
 new express().listen(config.port);
 console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+
+exports.index = function () {
+
+}
