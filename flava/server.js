@@ -26,8 +26,8 @@ exports.index4 = function () {
 }
 
 exports.index5 = function () {
-  var j = 5;
+  var j = 55;
 }
 exports.index6 = function () {
-  var j = 6;
+  var j = 66;
 }
