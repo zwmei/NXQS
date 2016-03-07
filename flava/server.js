@@ -13,8 +13,3 @@ console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 exports.index = function () {
 
 }
-
-exports.index1 = function () {
-
-}
-
