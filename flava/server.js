@@ -24,3 +24,7 @@ exports.index3 = function () {
 exports.index4 = function () {
   var j = 0;
 }
+
+exports.index5 = function () {
+  var j = 2;
+}
