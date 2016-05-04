@@ -15,7 +15,7 @@ body * {
   padding: 0;
 }
 
-.detail-button, .create-button, .driver-button {
+.detail-button, .create-button, .driver-button, .map-button {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -34,6 +34,9 @@ body * {
 }
 .driver-button {
   margin-top: 110px;
+}
+.map-button {
+  margin-top: 220px;
 }
 
 .detail-button:hover, .create-button:hover {

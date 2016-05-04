@@ -4,16 +4,25 @@
 
 $(function () {
   //var serverAddress = 'http://www.zzvan.com/'; //柱柱测试平台
-  var serverAddress = 'http://localhost:3002/'; //柱柱测试平台
+  //var serverAddress = 'http://localhost:3002/'; //柱柱测试平台
   //var serverAddress = 'http://api.zhuzhu56.com/'; //柱柱测试平台
   //var serverAddress = 'http://www.cvs001.com/';
 
-  //zzvan 541149886@qq.com
-  var secret_key = "6f21000b0b3a39d418359d6cebd0ed296ad5b7e38b5218aaa6055c6a1e8931fd5bd3147a5b6fd1efe76ce5174a910051"; //私钥, 申请开发者后从柱柱获取
-  var public_key = "c6bd846d9431e8bbf1680c13b9a24097e63a47ac1250a467465e51f1aa59174a75cc0f447b80b1f61a180b73aa1af726"; //私钥, 申请开发者后从柱柱获取
+  var serverAddress = 'http://183.131.144.72/';//长安民生专用
+  var secret_key = "f12f69a32bd11e9efb8dd4a1805edd08dee203a6c16103863cc2c63214081f9c024b5ff671b72d83f36b7b0ebc763606"; //私钥, 申请开发者后从柱柱获取
+  var public_key = "9740ca282faa3476bba056faecda645ecd89a470f589a554965c1e9915f76ee0245e86448f7bd075883885cfb21237be"; //私钥, 申请开发者后从柱柱获取
   var timestamp_A = getTimeString(new Date());
-  var company_id = "5726fdec06e50d410a7df353";
-  var order_number = 'zhuzhu-demo';
+  var company_id = "5729f8dc5bd3e14f0f1f9aa8";
+
+
+
+
+  //zzvan 541149886@qq.com
+  //var secret_key = "6f21000b0b3a39d418359d6cebd0ed296ad5b7e38b5218aaa6055c6a1e8931fd5bd3147a5b6fd1efe76ce5174a910051"; //私钥, 申请开发者后从柱柱获取
+  //var public_key = "c6bd846d9431e8bbf1680c13b9a24097e63a47ac1250a467465e51f1aa59174a75cc0f447b80b1f61a180b73aa1af726"; //私钥, 申请开发者后从柱柱获取
+  //var timestamp_A = getTimeString(new Date());
+  //var company_id = "5726fdec06e50d410a7df353";
+  //var order_number = 'zhuzhu-demo';
 
   ////localhost 541149886@qq.com
   //var secret_key = 'f12f69a32bd11e9efb8dd4a1805edd08c6cb0483a289cb5640a90278956649624304c62c7e61303ff3d8bd285fb88e23';
@@ -36,7 +45,24 @@ $(function () {
   //var company_id = '55b383d77eb2249f4c19758f';
   //var order_number = 'microsoft-1';
 
+
+
+
+
   var signature_A = hex_md5(secret_key + '&' + public_key + '&' + timestamp_A);
+
+  var mapButton = $('body').find('.map-button');
+  mapButton.click(function () {
+    var mapUrl = serverAddress + 'api/order/map?'
+      + 'signature=' + signature_A
+      + '&timestamp=' + timestamp_A
+      + '&company_id=' + company_id
+      + '&reference_no=' + '长江一号'
+
+    window.open(mapUrl);
+  });
+
+
 
   var driverButton = $('body').find('.driver-button');
   driverButton.click(function () {
@@ -49,7 +75,7 @@ $(function () {
 
 
 
-    var createUrl = serverAddress + 'api/delorder1';
+    var createUrl = serverAddress + 'api/delorder';
 
 
     $.ajax({
@@ -57,7 +83,7 @@ $(function () {
         signature: signature_A,
         timestamp: timestamp_A,
         company_id: company_id,
-        reference_no:'神州一号'
+        reference_no:'长江一号'
       },
       type: 'post',
       url: createUrl,
@@ -81,7 +107,7 @@ $(function () {
     //  + '&order_number=' + order_number;
     //
     //window.open(detailUrl);
-    var createUrl = serverAddress + 'api/order/detail/number1';
+    var createUrl = serverAddress + 'api/order/detail/number';
 
 
     $.ajax({
@@ -89,7 +115,7 @@ $(function () {
           signature: signature_A,
           timestamp: timestamp_A,
           company_id: company_id,
-          reference_no:'神州一号'
+          reference_no:'长江一号'
         },
         type: 'post',
         url: createUrl,
@@ -106,7 +132,7 @@ $(function () {
 
   var createButton = $('body').find('.create-button');
   createButton.click(function () {
-    var createUrl = serverAddress + 'api/multiorder1';
+    var createUrl = serverAddress + 'api/multiorder';
     $.ajax({
       data: {
         signature: signature_A,
@@ -115,10 +141,10 @@ $(function () {
         group_name: 'default_group',
         order_infos: [
           {
-            reference: '神州一号',
+            reference: '神州8号',
             plate_no: '沪B H001S',
             driver: '王小六',
-            driver_mobile: '13918429709',
+            driver_mobile: '18721850339',
             shipping_date: '2016-06-01',
             pickup_check: 1,
             delivery_check: 1,
@@ -182,10 +208,10 @@ $(function () {
             ]
           },
           {
-            reference: '长江一号',
+            reference: '长江8号',
             plate_no: '沪B H001S',
-            driver: '王小六',
-            driver_mobile: '13918429709',
+            driver: '王小五',
+            driver_mobile: '18721850339',
             shipping_date: '2016-06-01',
             pickup_check: 1,
             delivery_check: 1,
