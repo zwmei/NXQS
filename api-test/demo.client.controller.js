@@ -21,82 +21,27 @@ $(function () {
 
   var signature_A = hex_md5(secret_key + '&' + public_key + '&' + timestamp_A);
 
-  var mapButton = $('body').find('.map-button');
-  mapButton.click(function () {
-    var mapUrl = serverAddress + 'api/order/map?'
-      + 'signature=' + signature_A
-      + '&timestamp=' + timestamp_A
-      + '&company_id=' + company_id
-      + '&reference_no=' + '南柯一梦10';
-
-    window.open(mapUrl);
-  });
 
 
-  var driverButton = $('body').find('.driver-button');
-  driverButton.click(function () {
-    //var driverUrl = serverAddress + 'api/driver/list?'
-    //  + 'signature=' + signature_A
-    //  + '&timestamp=' + timestamp_A
-    //  + '&company_id=' + company_id;
-    //
-    //window.open(driverUrl);
+  function formatTimeNumber(number) {
+    return number > 10 ? number : '0' + number;
+  }
+  function getTimeString(datetime) {
+    var info = {
+      year: datetime.getFullYear(),
+      month: (datetime.getMonth() + 1),
+      date: datetime.getDate(),
+      hour: datetime.getHours(),
+      minute: datetime.getMinutes(),
+      second: datetime.getSeconds()
+    };
 
-
-    var deleteUrl = serverAddress + 'api/delorder';
-
-
-    $.ajax({
-      data: {
-        signature: signature_A,
-        timestamp: timestamp_A,
-        company_id: company_id,
-        reference_no: '南柯一梦10'
-      },
-      type: 'post',
-      url: deleteUrl,
-      dataType: 'json'
-    }).done(function (data) {
-      console.log(data);
-
-    }).fail(function (err) {
-      console.log(err);
-    });
-
-
-  });
-
-  var detailButton = $('body').find('.detail-button');
-  detailButton.click(function () {
-    //var detailUrl = serverAddress + 'api/orderpage?'
-    //  + 'signature=' + signature_A
-    //  + '&timestamp=' + timestamp_A
-    //  + '&company_id=' + company_id
-    //  + '&order_number=' + order_number;
-    //
-    //window.open(detailUrl);
-    var detailUrl = serverAddress + 'api/order/detail/number';
-
-
-    $.ajax({
-      data: {
-        signature: signature_A,
-        timestamp: timestamp_A,
-        company_id: company_id,
-        reference_no: '南柯一梦10'
-      },
-      type: 'post',
-      url: detailUrl,
-      dataType: 'json'
-    }).done(function (data) {
-
-      console.log(data);
-
-    }).fail(function (err) {
-      console.log(err);
-    });
-
-  });
+    var str = '';
+    for (var pro in info) {
+      str += formatTimeNumber(info[pro]);
+    }
+    return str;
+  };
 
   function getGoodsDetail(r1, n1, count) {
     var details = [];
@@ -118,25 +63,22 @@ $(function () {
 
     return details;
   }
-
-
-  function getSheetInfos(ref_no, ref, sheetCount, goodsCount) {
+  function getSheetInfos(ref_no, sheetCount, goodsCount) {
     var sheetInfos = [];
 
     for (var i = 0; i < sheetCount; i++) {
       sheetInfos.push({
         "so_reference": ref_no,
-        "reference": ref + i,
+        "reference": ref_no + i,
         "customer_code": "郑州可乐",
         "shipping_date": "2016-05-05 11:53:23",
-        "detail_infos": getGoodsDetail(ref_no, ref+i, goodsCount)
+        "detail_infos": getGoodsDetail(ref_no, ref_no+i, goodsCount)
       });
     }
     return sheetInfos;
   }
 
-
-  function getOrderInfos(ref_no, ref, orderCount, sheetCount, goodsCount) {
+  function getOrderInfos(ref_no, orderCount, sheetCount, goodsCount) {
     var orders = [];
 
     for (var i = 0; i < orderCount; i++) {
@@ -149,11 +91,21 @@ $(function () {
         "pickup_check": "1",
         "delivery_check": "0",
         push_mobiles: ['13918429709', '13472423583'],
-        sheet_infos: getSheetInfos(ref_no, ref, sheetCount, goodsCount)
+        sheet_infos: getSheetInfos(ref_no, sheetCount, goodsCount)
       });
     }
     return orders;
   }
+
+  function getRoadNumber() {
+    var roadNumber = $('.order-number').val();
+    if(!roadNumber) {
+      alert('请输入路单号');
+      return '';
+    }
+    return roadNumber;
+  }
+
 
   var createButton = $('body').find('.create-button');
   createButton.click(function () {
@@ -164,7 +116,7 @@ $(function () {
         timestamp: timestamp_A,
         company_id: company_id,
         group_name: 'default_group',
-        order_infos: getOrderInfos('南柯一梦10', '粉红色neinei',1,2,3)
+        order_infos: getOrderInfos(getRoadNumber(),1,2,3)
       },
       type: 'post',
       url: createUrl,
@@ -185,29 +137,62 @@ $(function () {
 
   });
 
-  function formatTimeNumber(number) {
-    return number > 10 ? number : '0' + number;
-  }
+  var mapButton = $('body').find('.map-button');
+  mapButton.click(function () {
+    var mapUrl = serverAddress + 'api/order/map?'
+      + 'signature=' + signature_A
+      + '&timestamp=' + timestamp_A
+      + '&company_id=' + company_id
+      + '&reference_no=' + getRoadNumber();
 
-  function getTimeString(datetime) {
-    var info = {
-      year: datetime.getFullYear(),
-      month: (datetime.getMonth() + 1),
-      date: datetime.getDate(),
-      hour: datetime.getHours(),
-      minute: datetime.getMinutes(),
-      second: datetime.getSeconds()
-    };
+    window.open(mapUrl);
+  });
 
-    var str = '';
-    for (var pro in info) {
-      str += formatTimeNumber(info[pro]);
-    }
-    return str;
-  };
+  var driverButton = $('body').find('.driver-button');
+  driverButton.click(function () {
+    var deleteUrl = serverAddress + 'api/delorder';
+
+    $.ajax({
+      data: {
+        signature: signature_A,
+        timestamp: timestamp_A,
+        company_id: company_id,
+        reference_no: getRoadNumber()
+      },
+      type: 'post',
+      url: deleteUrl,
+      dataType: 'json'
+    }).done(function (data) {
+      console.log(data);
+
+    }).fail(function (err) {
+      console.log(err);
+    });
 
 
-  //$.get('insert.client.view.html', function (data) {
-  //  $('body').append(data);
-  //});
+  });
+
+  var detailButton = $('body').find('.detail-button');
+  detailButton.click(function () {
+    var detailUrl = serverAddress + 'api/order/detail/number';
+    $.ajax({
+      data: {
+        signature: signature_A,
+        timestamp: timestamp_A,
+        company_id: company_id,
+        reference_no: getRoadNumber()
+      },
+      type: 'post',
+      url: detailUrl,
+      dataType: 'json'
+    }).done(function (data) {
+
+      console.log(data);
+
+    }).fail(function (err) {
+      console.log(err);
+    });
+
+  });
+
 });
