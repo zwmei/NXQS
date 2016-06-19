@@ -4,14 +4,20 @@
 
 $(function () {
 
+  //
+  //var serverAddress = 'http://183.131.144.72/';//长安民生生产专用
+  //var secret_key = "f12f69a32bd11e9efb8dd4a1805edd0803fe2c1b9e9018fe0cc1e30a0a5fff7f60ab05835d87c978a8b52b5f9f77fd16"; //私钥, 申请开发者后从柱柱获取
+  //var public_key = "9740ca282faa3476bba056faecda645e499fa0ad1add6e25c39e666827128fd5231cb1e84ce01d14edff204b986be7aa"; //私钥, 申请开发者后从柱柱获取
+  //var company_id = "5729f8dc5bd3e14f0f1f9aa8";
 
-  var serverAddress = 'http://183.131.144.72/';//长安民生专用
-  var secret_key = "f12f69a32bd11e9efb8dd4a1805edd0803fe2c1b9e9018fe0cc1e30a0a5fff7f60ab05835d87c978a8b52b5f9f77fd16"; //私钥, 申请开发者后从柱柱获取
-  var public_key = "9740ca282faa3476bba056faecda645e499fa0ad1add6e25c39e666827128fd5231cb1e84ce01d14edff204b986be7aa"; //私钥, 申请开发者后从柱柱获取
+
+  var serverAddress = 'http://101.66.253.182/';//长安民生测试专用
+  var secret_key = "f12f69a32bd11e9efb8dd4a1805edd08dee203a6c16103863cc2c63214081f9c024b5ff671b72d83f36b7b0ebc763606"; //私钥, 申请开发者后从柱柱获取
+  var public_key = "9740ca282faa3476bba056faecda645ecd89a470f589a554965c1e9915f76ee0245e86448f7bd075883885cfb21237be"; //私钥, 申请开发者后从柱柱获取
   var company_id = "5729f8dc5bd3e14f0f1f9aa8";
 
   //localhost 541149886@qq.com
-  //var serverAddress = 'http://localhost:3002/'; //民生测试平台
+  //var serverAddress = 'http://localhost:3002/'; //民生本地测试平台
   //var secret_key = 'f12f69a32bd11e9efb8dd4a1805edd08c6cb0483a289cb5640a90278956649624304c62c7e61303ff3d8bd285fb88e23';
   //var public_key = '9740ca282faa3476bba056faecda645eee203e957b27a57649f46017abc73eaaac0fd121ba39675c74b8ff826a90a72a';
   //var company_id = '55b383d77eb2249f4c19758f';
