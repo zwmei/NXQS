@@ -26,6 +26,9 @@ module.exports = function() {
     require(path.resolve(routePath))(app);
   });
 
+
+  app.use('/', express.static(path.resolve('../')));
+
   app.use(function (err, req, res, next) {
     res.status(500).json({
       err: {

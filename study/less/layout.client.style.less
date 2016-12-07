@@ -1,0 +1,57 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  max-width: 580px;
+  min-width: 320px;
+  background-color: #fff;
+
+  font-family: Helvetica,'Hiragino Sans GB W3',arial,sans-serif;
+}
+
+.text-container {
+  margin-bottom: 20px;
+  padding: 20px 20px 0;
+  max-height: 100%;
+  overflow: hidden;
+  line-height: 25px;
+  text-align: justify;
+  background-color: #f2f2f2;
+
+  &.close {
+    display: -webkit-box;
+    height: 50px;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-align: left;
+  }
+}
+.more-button {
+  cursor: pointer;
+}
+
+.winner-number {
+  margin: 50px auto;
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+
+  .number {
+    display: inline-block;
+    float: left;
+    width: 100px;
+    border: 1px solid #e4e4e4;
+    text-align: center;
+  }
+  .do-button {
+    display: inline-block;
+    float: right;
+    width: 80px;
+    border-radius: 20px;
+    background-color: #ff6600;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+  }
+}

@@ -11,10 +11,10 @@ $(function () {
   //var company_id = "5729f8dc5bd3e14f0f1f9aa8";
 
 
-  //var serverAddress = 'http://101.66.253.182/';//长安民生测试专用  541149886@qq.com
-  //var secret_key = "f12f69a32bd11e9efb8dd4a1805edd08dee203a6c16103863cc2c63214081f9c024b5ff671b72d83f36b7b0ebc763606"; //私钥, 申请开发者后从柱柱获取
-  //var public_key = "9740ca282faa3476bba056faecda645ecd89a470f589a554965c1e9915f76ee0245e86448f7bd075883885cfb21237be"; //私钥, 申请开发者后从柱柱获取
-  //var company_id = "5729f8dc5bd3e14f0f1f9aa8";
+  var serverAddress = 'http://101.66.253.182/';//长安民生测试专用  541149886@qq.com
+  var secret_key = "f12f69a32bd11e9efb8dd4a1805edd08dee203a6c16103863cc2c63214081f9c024b5ff671b72d83f36b7b0ebc763606"; //私钥, 申请开发者后从柱柱获取
+  var public_key = "9740ca282faa3476bba056faecda645ecd89a470f589a554965c1e9915f76ee0245e86448f7bd075883885cfb21237be"; //私钥, 申请开发者后从柱柱获取
+  var company_id = "5729f8dc5bd3e14f0f1f9aa8";
 
 
   //var serverAddress = 'http://101.66.253.182/';//长安民生测试专用  shp握手账号
@@ -23,11 +23,11 @@ $(function () {
   //var company_id = "572a9db51bb3edde11339132";
 
 
-  ////localhost 541149886@qq.com
-  var serverAddress = 'http://localhost:3002/'; //民生本地测试平台
-  var secret_key = 'f12f69a32bd11e9efb8dd4a1805edd08c6cb0483a289cb5640a90278956649624304c62c7e61303ff3d8bd285fb88e23';
-  var public_key = '9740ca282faa3476bba056faecda645eee203e957b27a57649f46017abc73eaaac0fd121ba39675c74b8ff826a90a72a';
-  var company_id = '55b383d77eb2249f4c19758f';
+  //localhost 541149886@qq.com
+  //var serverAddress = 'http://localhost:3002/'; //民生本地测试平台
+  //var secret_key = 'f12f69a32bd11e9efb8dd4a1805edd08c6cb0483a289cb5640a90278956649624304c62c7e61303ff3d8bd285fb88e23';
+  //var public_key = '9740ca282faa3476bba056faecda645eee203e957b27a57649f46017abc73eaaac0fd121ba39675c74b8ff826a90a72a';
+  //var company_id = '55b383d77eb2249f4c19758f';
 
 
   var timestamp_A = getTimeString(new Date());
@@ -98,7 +98,9 @@ $(function () {
         "plate_no": "苏AH3033",
         "driver": "魏巍巍",
         //"driver_mobile": "15900521140",
-        "driver_mobile": "18721850339",
+        //"driver_mobile": "13918429709",
+        //"driver_mobile": "13472423583",
+        "driver_mobile": "13918429709",
         "shipping_date": "2016-05-05 11:53:23",
         "pickup_check": "1",
         "delivery_check": "0",
@@ -128,7 +130,7 @@ $(function () {
         timestamp: timestamp_A,
         company_id: company_id,
         group_name: 'default_group',
-        order_infos: getOrderInfos(getRoadNumber(),1,2,5)
+        order_infos: getOrderInfos(getRoadNumber(),1,1,5)
       },
       type: 'post',
       url: createUrl,
@@ -151,7 +153,7 @@ $(function () {
 
   var mapButton = $('body').find('.map-button');
   mapButton.click(function () {
-    var mapUrl = serverAddress + 'api/order/map1?'
+    var mapUrl = serverAddress + 'api/order/map?'
       + 'signature=' + signature_A
       + '&timestamp=' + timestamp_A
       + '&company_id=' + company_id

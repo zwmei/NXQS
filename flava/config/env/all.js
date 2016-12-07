@@ -5,5 +5,5 @@
 'use strict';
 
 module.exports = {
-  port: process.env.PORT || 5002
+  port: process.env.PORT || 6002
 };

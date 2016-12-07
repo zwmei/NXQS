@@ -9,25 +9,3 @@ var express = require('./config/express');
 
 new express().listen(config.port);
 console.log('process.env.NODE_ENV', process.env.NODE_ENV);
-
-exports.index = function () {
-
-}
-
-exports.index1 = function () {
-
-}
-
-exports.index3 = function () {
-
-}
-exports.index4 = function () {
-  var j = 0;
-}
-
-exports.index5 = function () {
-  var j = 55;
-}
-exports.index6 = function () {
-  var j = 66;
-}
