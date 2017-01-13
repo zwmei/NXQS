@@ -2,7 +2,11 @@
  * Created by wayne on 16/7/26.
  */
 
+
+
 $(function () {
+
+
   $('.more-button').click(function () {
     //已经展开
     if ($(this).hasClass('more')) {
@@ -70,5 +74,19 @@ $(function () {
   }, 'android1057b157b1201608151751190931');
 
   $('.water-maker').attr('src', imgLink);
+
+
+
+  $.ajax({
+    type: 'GET',
+    url: 'http://search.anccnet.com/searchResult2.aspx?keyword=6901236340288',
+    dataType: 'JSONP'
+  }).done(function (data) {
+    console.log(data);
+  }).fail(function (err) {
+    alert('获取失败' + err);
+  });
+
+  // $.get("test.php", {keyword:6901236340288}, function(data){ alert("Data Loaded: " + data); });
 
 });
